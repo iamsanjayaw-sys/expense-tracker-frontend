@@ -1,14 +1,8 @@
 import "./TextField.css";
 
-export default function TextField({
-  label,
-  name,
-  type = "text",
-  value,
-  onChange,
-}) {
+const TextField = ({ label, type, name, value, onChange }) => {
   return (
-    <div className="input-group">
+    <div className="textfield">
       <label>{label}</label>
       <input
         type={type}
@@ -18,4 +12,6 @@ export default function TextField({
       />
     </div>
   );
-}
+};
+
+export default TextField;

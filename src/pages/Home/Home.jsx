@@ -1,47 +1,62 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+
+import Header from "../../components/Header/Header";
 import ExpenseCard from "../../components/ExpenseCard/ExpenseCard";
-import AddExpensePopup from "../../components/AddExpensePopup/AddExpensePopup";
+import FloatingButton from "../../components/FloatingButton/FloatingButton";
+import AddExpensePopup from "../../components/Popup/AddExpensePopup";
+
 import "./Home.css";
 
-export default function Home() {
+const Home = () => {
   const [expenses, setExpenses] = useState([]);
-  const [show, setShow] = useState(false);
+  const [date, setDate] = useState("");
+  const [showPopup, setShowPopup] = useState(false);
 
-  const token = localStorage.getItem("token");
-
-  const load = async () => {
-    const res = await axios.get("http://localhost:5000/api/expenses", {
-      headers: { Authorization: `Bearer ${token}` },
-    });
+  const loadExpenses = async () => {
+    const res = await axios.get(
+      "http://localhost:3000/api/expenses",
+      {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+        params: date ? { date } : {},
+      }
+    );
     setExpenses(res.data);
   };
 
   useEffect(() => {
-    load();
-  }, []);
+    loadExpenses();
+  }, [date]);
 
   return (
     <>
-      <header className="header">Expense Tracker</header>
+      <Header />
 
-      <div className="home-container">
+      <div className="filter">
+        <input type="date" onChange={(e) => setDate(e.target.value)} />
+        <button onClick={() => setDate("")}>Clear</button>
+      </div>
+
+      <div className="expense-list">
         {expenses.length === 0 ? (
-          <p className="no-expense">No expense found</p>
+          <p>No data</p>
         ) : (
-          expenses.map((e) => <ExpenseCard key={e.id} data={e} />)
+          expenses.map((e) => <ExpenseCard key={e.id} expense={e} />)
         )}
       </div>
 
-      <button className="add-btn" onClick={() => setShow(true)}>＋</button>
+      <FloatingButton onClick={() => setShowPopup(true)} />
 
-      <AddExpensePopup
-        show={show}
-        close={() => setShow(false)}
-        refresh={load}
-      />
-
-      <footer className="footer">© 2026 Expense Tracker</footer>
+      {showPopup && (
+        <AddExpensePopup
+          onClose={() => setShowPopup(false)}
+          onAdded={loadExpenses}
+        />
+      )}
     </>
   );
-}
+};
+
+export default Home;

@@ -1,23 +1,18 @@
-.input-group {
+.textfield {
   display: flex;
   flex-direction: column;
   margin-bottom: 15px;
 }
 
-.input-group label {
+.textfield label {
   margin-bottom: 5px;
-  font-size: 14px;
-  color: var(--text-main);
+  font-weight: 600;
+  color: #333;
 }
 
-.input-group input {
+.textfield input {
   padding: 10px;
-  border-radius: var(--border-radius);
-  border: 1px solid #ccc;
-  font-size: 15px;
-}
-
-.input-group input:focus {
+  border-radius: 6px;
+  border: 1px solid #80aec6;
   outline: none;
-  border-color: var(--primary);
 }

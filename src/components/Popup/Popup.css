@@ -10,19 +10,20 @@
   align-items: center;
 }
 
-.popup {
-  background: white;
+.popup-box {
+  background: #cbdf9a;
   padding: 20px;
-  border-radius: var(--border-radius);
+  border-radius: 10px;
+  width: 300px;
   text-align: center;
-  width: 280px;
 }
 
-.popup button {
+.popup-box button {
   margin-top: 15px;
-  background: var(--primary);
+  padding: 8px 20px;
   border: none;
-  padding: 8px 16px;
-  border-radius: var(--border-radius);
+  border-radius: 6px;
+  background-color: #80aec6;
+  color: white;
   cursor: pointer;
 }

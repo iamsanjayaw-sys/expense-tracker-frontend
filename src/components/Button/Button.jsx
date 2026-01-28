@@ -1,9 +1,11 @@
 import "./Button.css";
 
-export default function Button({ text, onClick, type = "primary" }) {
+const Button = ({ text, onClick }) => {
   return (
-    <button className={`btn btn-${type}`} onClick={onClick}>
+    <button className="btn" onClick={onClick}>
       {text}
     </button>
   );
-}
+};
+
+export default Button;

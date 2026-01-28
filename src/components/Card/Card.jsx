@@ -1,5 +1,7 @@
 import "./Card.css";
 
-export default function Card({ children }) {
+const Card = ({ children }) => {
   return <div className="card">{children}</div>;
-}
+};
+
+export default Card;

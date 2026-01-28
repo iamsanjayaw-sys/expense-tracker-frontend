@@ -1,8 +1,21 @@
+:root {
+  --bg-main: #6cc6c6;
+  --card-bg: #ffffff;
+  --primary: #ffb703;
+  --secondary: #8ecae6;
+  --text-main: #023047;
+  --border-radius: 12px;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: var(--bg-main);
+}
+
 .page-center {
   min-height: 100vh;
-  background: var(--bg-main);
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 15px;
 }
