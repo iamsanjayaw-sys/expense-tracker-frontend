@@ -32,16 +32,16 @@ const Signup = () => {
 
         {/* LEFT */}
         <div className="signup-left">
-          <h1>Sign Up</h1>
+          <h1>Sign Up - Start Managing Your Expenses</h1>
           <p>
-            Sign up to unlock exciting <br />
-            experience with our services.
+            Sign up to track, manage,<br />
+            and control your expenses effortlessly.
           </p>
         </div>
 
         {/* RIGHT */}
         <div className="signup-right">
-          <h2>Lets Get Started</h2>
+          <h2>“Lets Get Starte”</h2>
 
           <div className="form-group">
             <label>Full Name</label>

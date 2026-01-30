@@ -81,3 +81,26 @@
     transform: translateY(0);
   }
 }
+@media (max-width: 480px) {
+  .expense-image {
+    height: 160px;
+  }
+
+  .expense-content {
+    padding: 14px;
+  }
+
+  .expense-content h4 {
+    font-size: 15px;
+  }
+
+  .amount {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 768px) {
+  .expense-image {
+    height: 170px;
+  }
+}

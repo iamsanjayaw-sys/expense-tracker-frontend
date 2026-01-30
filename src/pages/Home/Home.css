@@ -60,3 +60,59 @@ body {
 .add-btn:hover {
   transform: scale(1.1) rotate(90deg);
 }
+
+
+@media (max-width: 480px) {
+  .header {
+    padding: 14px 20px;
+  }
+
+  .header h2 {
+    font-size: 18px;
+  }
+
+  .logout-btn {
+    padding: 8px 14px;
+    font-size: 13px;
+  }
+
+  .filter-bar {
+    padding: 10px 20px;
+    justify-content: center;
+  }
+
+  .home-container {
+    grid-template-columns: 1fr;
+    padding: 16px;
+  }
+
+  .add-btn {
+    width: 52px;
+    height: 52px;
+    font-size: 28px;
+    bottom: 20px;
+    right: 20px;
+  }
+}
+@media (max-width: 768px) {
+  .home-container {
+    grid-template-columns: repeat(2, 1fr);
+    padding: 20px;
+  }
+
+  .filter-bar {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .home-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1200px) {
+  .home-container {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

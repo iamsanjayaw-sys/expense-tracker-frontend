@@ -33,7 +33,7 @@ const Login = () => {
           <h1>Sign In</h1>
           <p>
             Welcome back! <br />
-            Please login to your account.
+            Sign in to access your account.
           </p>
         </div>
 
