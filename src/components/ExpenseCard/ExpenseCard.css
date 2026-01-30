@@ -57,3 +57,65 @@
     transform: translateY(0);
   }
 }
+
+.expense-card {
+  background: #fff;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+  transition: 0.3s;
+  margin-bottom: 20px;
+}
+
+.expense-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* IMAGE AREA */
+.expense-image {
+  position: relative;
+  height: 180px;
+  overflow: hidden;
+}
+
+.expense-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* NO BILL BADGE */
+.no-bill-badge {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  font-size: 12px;
+  padding: 6px 10px;
+  border-radius: 20px;
+}
+
+/* CONTENT */
+.expense-content {
+  padding: 16px 18px;
+}
+
+.expense-content h4 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.expense-content .date {
+  font-size: 13px;
+  color: #777;
+  margin: 4px 0 12px;
+}
+
+.amount {
+  font-size: 16px;
+  font-weight: bold;
+  color: #2fa4a9;
+}
