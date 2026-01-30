@@ -1,27 +1,54 @@
+/* HEADER CONTAINER */
 .header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  padding: 18px 60px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px;
-  background: white;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+
+  /* GRADIENT */
+  background: linear-gradient(135deg, #4299e1, #38b2ac);
+
+  /* GLASS EFFECT */
+  backdrop-filter: blur(10px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
+/* TITLE */
+.header h2 {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: 0.5px;
+}
+
+/* LOGOUT BUTTON */
 .logout-btn {
-  padding: 8px 16px;
+  padding: 10px 22px;
+  border-radius: 25px;
   border: none;
-  background: #f25c5c;
-  color: white;
-  border-radius: 6px;
   cursor: pointer;
+
+  background: white;
+  color: #e53e3e;
+  font-weight: 700;
+  font-size: 14px;
+
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+  transition: all 0.3s ease;
 }
 
-/* Empty state message */
-.empty-state {
-  height: 300px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #777;
-  font-size: 16px;
+/* BUTTON HOVER */
+.logout-btn:hover {
+  background: #e53e3e;
+  color: white;
+  transform: translateY(-2px) scale(1.05);
+}
+
+/* BUTTON ACTIVE */
+.logout-btn:active {
+  transform: scale(0.95);
 }
