@@ -1,15 +1,27 @@
 .header {
-  background: #80aec6;
-  padding: 15px 25px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 20px;
+  background: white;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
 
-.header button {
-  background: #e8b2c0;
+.logout-btn {
+  padding: 8px 16px;
   border: none;
-  padding: 8px 15px;
+  background: #f25c5c;
+  color: white;
   border-radius: 6px;
   cursor: pointer;
+}
+
+/* Empty state message */
+.empty-state {
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #777;
+  font-size: 16px;
 }

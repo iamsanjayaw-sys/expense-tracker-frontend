@@ -1,86 +1,77 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import axios from "axios";
-
-import TextField from "../../components/TextField/TextField";
-import Button from "../../components/Button/Button";
-import Card from "../../components/Card/Card";
-import Popup from "../../components/Popup/Popup";
-
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import "./Login.css";
+import api from "../../api/axios";
 
 const Login = () => {
   const navigate = useNavigate();
 
-  const [formData, setFormData] = useState({
-    email: "",
-    password: "",
-  });
-
-  const [error, setError] = useState("");
-
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-  };
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const handleLogin = async () => {
-    const { email, password } = formData;
-
-    if (!email || !password) {
-      setError("All fields are required ❗");
-      return;
-    }
-
     try {
-      const res = await axios.post(
-        "http://localhost:3000/api/auth/login",
-        formData
-      );
+      const res = await api.post("/auth/login", {
+        email,
+        password,
+      });
 
       localStorage.setItem("token", res.data.token);
       navigate("/home");
-    } catch (err) {
-      if (err.response) {
-        setError(err.response.data.message);
-      } else {
-        setError("Server error ❌");
-      }
+    } catch (error) {
+      console.error(error);
+      alert("Invalid email or password");
     }
   };
 
   return (
-    <div className="login-container">
-      <Card>
-        <h2>Login</h2>
+    <div className="signup-container">
+      <div className="signup-card">
 
-        <TextField
-          label="Email"
-          type="email"
-          name="email"
-          value={formData.email}
-          onChange={handleChange}
-        />
+        {/* LEFT */}
+        <div className="signup-left">
+          <h1>Sign In</h1>
+          <p>
+            Welcome back! <br />
+            Please login to your account.
+          </p>
+        </div>
 
-        <TextField
-          label="Password"
-          type="password"
-          name="password"
-          value={formData.password}
-          onChange={handleChange}
-        />
+        {/* RIGHT */}
+        <div className="signup-right">
+          <h2>Welcome Back</h2>
 
-        <Button text="Login" onClick={handleLogin} />
+          <div className="form-group">
+            <label>E-mail</label>
+            <input
+              type="email"
+              placeholder="Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </div>
 
-        <p className="register-text">
-          Don’t have an account?
-          <span onClick={() => navigate("/")}> Register</span>
-        </p>
-      </Card>
+          <div className="form-group">
+            <label>Password</label>
+            <input
+              type="password"
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </div>
 
-      <Popup message={error} onClose={() => setError("")} />
+          <button className="signup-btn" onClick={handleLogin}>
+            Sign In
+          </button>
+
+          <p className="login-text">
+            Don’t have an account?{" "}
+            <Link to="/signup">Sign up</Link>
+          </p>
+        </div>
+
+      </div>
     </div>
   );
 };

@@ -1,12 +1,63 @@
-.filter {
-  display: flex;
-  gap: 10px;
-  padding: 15px;
+.home-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
 }
 
-.expense-list {
+.filter-bar {
+  max-width: 900px;
+  margin: 20px auto 10px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.filter-bar input {
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  font-size: 14px;
+}
+
+/* Floating Add Button */
+.add-btn {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: #2fa4a9;
+  color: white;
+  font-size: 32px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+  transition: 0.3s;
+}
+
+.add-btn:hover {
+  transform: scale(1.1);
+}
+
+.home-container {
+  max-width: 900px;
+  margin: 0 auto;
   padding: 20px;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 20px;
+
+  /* 🔥 THIS IS THE FIX */
+  min-height: calc(100vh - 160px);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Empty state message */
+.empty-state {
+  flex: 1; /* 🔥 take remaining space */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #777;
+  font-size: 16px;
+  text-align: center;
 }

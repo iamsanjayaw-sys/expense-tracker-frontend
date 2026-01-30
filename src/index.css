@@ -1,13 +1,10 @@
-/* index.css */
-:root {
-  --primary: #4f46e5;
-  --secondary: #22c55e;
-  --bg: #f4f6ff;
-  --card: #ffffff;
-  --danger: #ef4444;
-}
-body {
+* {
   margin: 0;
-  font-family: Arial, sans-serif;
-  background: var(--bg);
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  background: #f3f4f6;
 }

@@ -1,58 +1,65 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
-
+import api from "../../api/axios";
 import Header from "../../components/Header/Header";
 import ExpenseCard from "../../components/ExpenseCard/ExpenseCard";
-import FloatingButton from "../../components/FloatingButton/FloatingButton";
-import AddExpensePopup from "../../components/Popup/AddExpensePopup";
-
+import AddExpensePopup from "../../components/AddExpensePopup/AddExpensePopup";
 import "./Home.css";
 
 const Home = () => {
   const [expenses, setExpenses] = useState([]);
-  const [date, setDate] = useState("");
   const [showPopup, setShowPopup] = useState(false);
+  const [selectedDate, setSelectedDate] = useState("");
 
   const loadExpenses = async () => {
-    const res = await axios.get(
-      "http://localhost:3000/api/expenses",
-      {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-        params: date ? { date } : {},
-      }
-    );
+    const res = await api.get("/expenses");
     setExpenses(res.data);
   };
 
   useEffect(() => {
     loadExpenses();
-  }, [date]);
+  }, []);
+
+  const filteredExpenses = selectedDate
+    ? expenses.filter(
+        (e) =>
+          new Date(e.created_at).toISOString().slice(0, 10) === selectedDate
+      )
+    : expenses;
 
   return (
     <>
       <Header />
 
-      <div className="filter">
-        <input type="date" onChange={(e) => setDate(e.target.value)} />
-        <button onClick={() => setDate("")}>Clear</button>
+      {/* DATE FILTER */}
+      <div className="filter-bar">
+        <input
+          type="date"
+          value={selectedDate}
+          onChange={(e) => setSelectedDate(e.target.value)}
+        />
       </div>
 
-      <div className="expense-list">
-        {expenses.length === 0 ? (
-          <p>No data</p>
-        ) : (
-          expenses.map((e) => <ExpenseCard key={e.id} expense={e} />)
-        )}
-      </div>
+      <div className="home-container">
+  {filteredExpenses.length === 0 ? (
+    <div className="empty-state">
+      <p>📭 No expenses found for this date</p>
+    </div>
+  ) : (
+    filteredExpenses.map((exp) => (
+      <ExpenseCard key={exp.id} expense={exp} />
+    ))
+  )}
+</div>
 
-      <FloatingButton onClick={() => setShowPopup(true)} />
+
+      <button className="add-btn" onClick={() => setShowPopup(true)}>
+        +
+      </button>
 
       {showPopup && (
         <AddExpensePopup
-          onClose={() => setShowPopup(false)}
-          onAdded={loadExpenses}
+          closePopup={() => setShowPopup(false)}
+          refresh={loadExpenses}
         />
       )}
     </>
