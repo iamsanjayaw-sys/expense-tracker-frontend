@@ -1,0 +1,106 @@
+/* CARD */
+.expense-card {
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 22px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.18);
+  transition: 0.35s ease;
+  animation: fadeUp 0.5s ease;
+  cursor: pointer;
+}
+
+.expense-card:hover {
+  transform: translateY(-10px) scale(1.02);
+}
+
+/* IMAGE AREA */
+.expense-image {
+  position: relative;
+  height: 190px;
+  overflow: hidden;
+}
+
+.expense-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: 0.5s ease;
+}
+
+/* IMAGE HOVER EFFECT */
+.expense-card:hover .expense-image img {
+  transform: scale(1.15);
+}
+
+/* NO BILL BADGE */
+.no-bill-badge {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  font-size: 12px;
+  padding: 6px 12px;
+  border-radius: 20px;
+}
+
+/* CONTENT */
+.expense-content {
+  padding: 18px 20px;
+  background: white;
+}
+
+.expense-content h4 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 700;
+  color: #2d3748;
+}
+
+.expense-content .date {
+  font-size: 13px;
+  color: #718096;
+  margin: 6px 0 12px;
+}
+
+/* AMOUNT */
+.amount {
+  font-size: 17px;
+  font-weight: bold;
+  color: #2fa4a9;
+}
+
+/* ANIMATION */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@media (max-width: 480px) {
+  .expense-image {
+    height: 160px;
+  }
+
+  .expense-content {
+    padding: 14px;
+  }
+
+  .expense-content h4 {
+    font-size: 15px;
+  }
+
+  .amount {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 768px) {
+  .expense-image {
+    height: 170px;
+  }
+}
